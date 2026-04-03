@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TuneAura – Results</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="results-page">
+<div class="floating-shape shape1"></div>
+<div class="floating-shape shape2"></div>
+<div class="floating-shape shape3"></div>
+
+<header class="top-header">
+    <div class="logo">TuneAura</div>
+</header>
+
+<div class="result-box">
+    <h2>Results for "{{ query }}"</h2>
+    <p>{{ count }} songs found</p>
+</div>
+
+<div class="songs-grid">
+{% for s in songs %}
+    <div class="song-card" onclick="openPlayer('{{ s.track_name }}','{{ s.artist }}','{{ s.youtube }}')">
+
+        <img src="{{ s.image_url }}" class="album-img">
+
+<h3>{{ s.track_name }}</h3>
+<p class="artist">{{ s.artist }}</p>
+<p class="album">{{ s.album }}</p>
+<p class="genre">{{ s.predicted }} ({{ s.confidence }}%)</p>
+<p class="mood-tag">{{ s.mood }}</p>
+
+<!-- HEART BUTTON (AESTHETIC) -->
+<div class="heart-btn">♡</div>
+
+<!-- MUSIC BARS -->
+<div class="music-bars">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+</div>
+    </div>
+{% endfor %}
+</div>
+
+<!-- POPUP -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+
+        <h2 id="modal-title"></h2>
+        <p id="modal-artist"></p>
+
+        <a id="youtube-button" href="#" target="_blank" class="yt-btn">
+            ▶ Watch on YouTube
+        </a>
+
+        <button class="close-btn" onclick="closePlayer()">Close</button>
+    </div>
+</div>
+<script>
+function openPlayer(name, artist, link){
+    document.getElementById("modal-title").innerText = name;
+    document.getElementById("modal-artist").innerText = artist;
+
+    // Set YouTube link to open in new tab
+    document.getElementById("youtube-button").href = link;
+
+    document.getElementById("modal").style.display = "flex";
+}
+
+function closePlayer(){
+    document.getElementById("modal").style.display = "none";
+}
+</script>

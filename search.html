@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TuneAura – Discover Music</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <script>
+        function fillSearch(text){
+            document.querySelector("input[name='q']").value = text;
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="logo">TuneAura</div>
+
+    <div class="hero-title">Discover Your Sound</div>
+    <div class="hero-sub">Search songs, artists, moods & genres</div>
+
+    <div class="search-container">
+        <form action="/results">
+            <input type="text" name="q" placeholder="Search for music..." required>
+            <button class="search-btn">Search</button>
+        </form>
+    </div>
+
+   <!-- FEATURED CARDS -->
+<div class="cards">
+
+    <div class="card"
+        style="background-image: url('https://images.unsplash.com/photo-1485217988980-11786ced9454?auto=format&fit=crop&w=900&q=80');"
+        onclick="fillSearch('New Music')">
+        <div class="card-label">New Music</div>
+    </div>
+
+    <div class="card"
+        style="background-image: url('https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?auto=format&fit=crop&w=1200&q=80');"
+        onclick="fillSearch('Trending')">
+        <div class="card-label">Trending</div>
+    </div>
+
+    <div class="card"
+        style="background-image: url('https://images.unsplash.com/photo-1494232410401-ad00d5433cfa?auto=format&fit=crop&w=900&q=60');"
+        onclick="fillSearch('Top Artists')">
+        <div class="card-label">Top Artists</div>
+    </div>
+
+   
+    <!-- ⭐ FIXED MOOD CARD -->
+    <div class="card"
+        style="background-image: url('https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=900&q=80');"
+        onclick="window.location='/mood'">
+        <div class="card-label">Discover Mood</div>
+    </div>
+
+</div>
+
+    </div>
+
+    <!-- GENRES -->
+    <div class="genre-section">
+        <div class="genre-title">Genres</div>
+
+        <div class="genre-cards">
+
+            <div class="genre-card"
+                style="background-image:url('https://images.unsplash.com/photo-1485579149621-3123dd979885?auto=format&fit=crop&w=900&q=60');"
+                onclick="fillSearch('Pop')">
+                <div class="genre-label">Pop</div>
+            </div>
+
+            <div class="genre-card"
+                style="background-image:url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=900&q=60');"
+                onclick="fillSearch('Rock')">
+                <div class="genre-label">Rock</div>
+            </div>
+
+            <div class="genre-card"
+                style="background-image:url('https://images.unsplash.com/photo-1509339022327-1e1e25360a41?auto=format&fit=crop&w=900&q=60');"
+                onclick="fillSearch('Indie')">
+                <div class="genre-label">Indie</div>
+            </div>
+
+            <div class="genre-card"
+                style="background-image:url('https://images.unsplash.com/photo-1507878866276-a947ef722fee?auto=format&fit=crop&w=900&q=60');"
+                onclick="fillSearch('Hip Hop')">
+                <div class="genre-label">Hip Hop</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
